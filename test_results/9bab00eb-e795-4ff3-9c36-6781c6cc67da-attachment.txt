@@ -1,8 +1,0 @@
-Start Test
-Current url https://www.onlinetrade.ru/member/login.html
-Input user name
-Input password
-CLick login button
-Good value word
-Current url https://www.onlinetrade.ru/member/
-CLick main button
