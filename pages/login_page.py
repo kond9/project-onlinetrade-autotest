@@ -7,7 +7,7 @@ from base.base_class import Base
 from utilities.logger import Logger
 
 
-class Login_page(Base):
+class LoginPage(Base):
     url = 'https://www.onlinetrade.ru/member/login.html'
 
     def __init__(self, driver):

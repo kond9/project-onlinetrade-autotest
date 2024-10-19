@@ -7,7 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
-from pages.login_page import Login_page
+from pages.login_page import LoginPage
+from pages.personal_account_page import PersonalAccountPage
 
 
 @allure.description("Test buy product")
@@ -18,7 +19,10 @@ def test_buy_product():
 
     print("Start Test")
 
-    login = Login_page(driver)
+    login = LoginPage(driver)
     login.authorization()
+
+    pa = PersonalAccountPage(driver)
+    pa.go_to_the_main_page()
 
     driver.quit()
