@@ -8,6 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from pages.login_page import LoginPage
+from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 
 
@@ -24,5 +25,8 @@ def test_buy_product():
 
     pa = PersonalAccountPage(driver)
     pa.go_to_the_main_page()
+
+    mp = MainPage(driver)
+    mp.go_to_the_catalog()
 
     driver.quit()
