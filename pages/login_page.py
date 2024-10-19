@@ -1,3 +1,5 @@
+from configparser import ConfigParser
+
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -13,6 +15,15 @@ class LoginPage(Base):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
+
+    # Config
+
+    config_section = "esb"
+    config = ConfigParser()
+    config.read('config.ini')
+
+    config_user_name = config.get(config_section, 'user_name')
+    config_password = config.get(config_section, 'password')
 
     # Locators
 
@@ -61,8 +72,8 @@ class LoginPage(Base):
             self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
-            self.input_user_name("katyakishuk@mail.ru")
-            self.input_password("QMPnDG2!552ABNL")
+            self.input_user_name(self.config_user_name)
+            self.input_password(self.config_password)
             self.click_login_button()
             self.assert_word(self.get_main_word(), "Мой профиль")
             Logger.add_end_step(url=self.driver.current_url, method="authorization")
