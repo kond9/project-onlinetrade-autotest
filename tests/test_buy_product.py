@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
+from pages.electronics_category_in_the_catalog import ElectronicsCategoryInTheCatalogPage
 
 
 @allure.description("Test buy product")
@@ -28,5 +29,8 @@ def test_buy_product():
 
     mp = MainPage(driver)
     mp.go_to_the_catalog()
+
+    ec_in_the_catalog = ElectronicsCategoryInTheCatalogPage(driver)
+    ec_in_the_catalog.go_to_the_phones_and_gadgets()
 
     driver.quit()
