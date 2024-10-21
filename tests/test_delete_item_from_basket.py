@@ -1,7 +1,5 @@
-import time
 import allure
 
-from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 from pages.basket_page import BasketPage
 
