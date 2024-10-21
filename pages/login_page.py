@@ -17,7 +17,7 @@ class LoginPage(Base):
 
     # Config
 
-    config_section = "esb"
+    config_section = "data_auth"
     config = ConfigParser()
     config.read('config.ini')
 
