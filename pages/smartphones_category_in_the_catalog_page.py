@@ -17,6 +17,7 @@ class SmartphonesCategoryInTheCatalogPage(Base):
     # Locators
 
     sort_button = "//select[@id='js__listingSort_ID']"
+    price_items = "//span[@itemprop='price']"
     filter_availability_button = "//label[@for='f1d2185d7198ca866f057607628f90f1e']"
     show_all_producers_button = "//*[@id='columnBlock__producersFilterIDfilter__ID']/div[2]/div/a"
     input_producer = "//input[@data-filterid='producersFilterID']"
@@ -34,6 +35,10 @@ class SmartphonesCategoryInTheCatalogPage(Base):
     def get_sort_button(self):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.sort_button)))
+
+    def get_price_items(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.presence_of_all_elements_located((By.XPATH, self.price_items)))
 
     def get_filter_availability_button(self):
         return WebDriverWait(self.driver, 30).until(
@@ -87,6 +92,16 @@ class SmartphonesCategoryInTheCatalogPage(Base):
         self.get_sort_button().send_keys(Keys.RETURN)
         print("CLick sort button")
 
+    def check_prices(self):
+        list_elements_price = self.get_price_items()
+        list_price = []
+        translation_table = str.maketrans('', '', " ₽")
+        for price in list_elements_price:
+            list_price.append(price.text.translate(translation_table))
+        sorted_list_price = sorted(list_price, key=int, reverse=True)
+        if list_price == sorted_list_price:
+            print("Check prices")
+
     def click_filter_availability_button(self):
         self.get_filter_availability_button().click()
         print("CLick filter availability button")
@@ -135,6 +150,7 @@ class SmartphonesCategoryInTheCatalogPage(Base):
             Logger.add_start_step(method="sorting_and_filtering_smartphones")
             self.get_current_url()
             self.click_sort_button()
+            self.check_prices()
             self.click_filter_availability_button()
             self.click_show_all_producers_button()
             self.click_input_producer()
