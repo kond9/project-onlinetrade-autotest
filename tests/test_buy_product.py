@@ -16,15 +16,10 @@ from pages.smartphones_category_in_the_catalog_page import SmartphonesCategoryIn
 
 
 @allure.description("Test buy product")
-def test_buy_product():
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
+def test_buy_product(login):
+    driver = login
 
     print("Start Test")
-
-    login = LoginPage(driver)
-    login.authorization()
 
     pa = PersonalAccountPage(driver)
     pa.go_to_the_main_page()
@@ -40,5 +35,3 @@ def test_buy_product():
 
     smartphones_in_the_catalog = SmartphonesCategoryInTheCatalogPage(driver)
     smartphones_in_the_catalog.sorting_and_filtering_smartphones()
-
-    driver.quit()
