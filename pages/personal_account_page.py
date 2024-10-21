@@ -16,7 +16,9 @@ class PersonalAccountPage(Base):
     # Locators
 
     main_button = "//span[@itemprop='name']"
+    basket_button = "//div[@class='huab__cell huab__cell__multicart js__header__basketCover ']"
     main_word = "(//h2[@class='asH1'])[1]"
+    basket_word = "//h1"
 
     # Getters
 
@@ -24,15 +26,27 @@ class PersonalAccountPage(Base):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.main_button)))
 
+    def get_basket_button(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.basket_button)))
+
     def get_main_word(self):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.main_word)))
+
+    def get_basket_word(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.basket_word)))
 
     # Action
 
     def click_main_button(self):
         self.get_main_button().click()
         print("CLick main button")
+
+    def click_basket_button(self):
+        self.get_basket_button().click()
+        print("CLick basket button")
 
     # Methods
 
@@ -43,3 +57,11 @@ class PersonalAccountPage(Base):
             self.click_main_button()
             self.assert_word(self.get_main_word(), "Акции")
             Logger.add_end_step(url=self.driver.current_url, method="go_to_the_main_page")
+
+    def go_to_the_basket_page(self):
+        with allure.step("Go to the basket page"):
+            Logger.add_start_step(method="go_to_the_basket_page")
+            self.get_current_url()
+            self.click_basket_button()
+            self.assert_word(self.get_basket_word(), "Корзина")
+            Logger.add_end_step(url=self.driver.current_url, method="go_to_the_basket_page")
