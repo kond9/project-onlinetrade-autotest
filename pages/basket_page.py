@@ -51,7 +51,6 @@ class BasketPage(Base):
             self.get_current_url()
             self.click_delete_button()
             self.click_confirm_delete_button()
-            print(self.get_main_word())
             self.assert_word(self.get_main_word(),
                              "Стикер в шапке сайта всегда покажет вам, с какой корзиной вы работаете в данный момент — теперь у каждой корзины свой цвет и своё название. Состояние других корзин легко увидеть просто наведя мышку на стикер.")
             Logger.add_end_step(url=self.driver.current_url, method="delete_item")
