@@ -1,13 +1,6 @@
 import time
 import allure
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support import expected_conditions as EC
-from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 from pages.electronics_category_in_the_catalog import ElectronicsCategoryInTheCatalogPage
