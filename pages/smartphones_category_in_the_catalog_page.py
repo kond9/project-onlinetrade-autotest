@@ -1,5 +1,5 @@
 from selenium.common import TimeoutException
-from selenium.webdriver import Keys
+from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -70,7 +70,7 @@ class SmartphonesCategoryInTheCatalogPage(Base):
 
     def get_show_filtered_smartphones_button(self):
         return WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.show_filtered_smartphones_button)))
+            EC.visibility_of_element_located((By.XPATH, self.show_filtered_smartphones_button)))
 
     def get_buy_button(self):
         return WebDriverWait(self.driver, 30).until(

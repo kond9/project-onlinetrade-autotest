@@ -8,8 +8,7 @@ from pages.smartphones_category_in_the_catalog_page import SmartphonesCategoryIn
 
 
 @allure.description("Test buy product")
-def test_buy_product(login):
-    driver = login
+def test_buy_product(driver, login):
 
     print("Start Test")
 
