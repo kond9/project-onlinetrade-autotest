@@ -6,7 +6,6 @@ from pages.basket_page import BasketPage
 
 @allure.description("Test delete item from basket")
 def test_delete_item_from_basket(driver, login):
-
     print("Начало теста")
 
     pa = PersonalAccountPage(driver)

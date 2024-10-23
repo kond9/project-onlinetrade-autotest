@@ -1,9 +1,11 @@
+import allure
+
 from configparser import ConfigParser
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import allure
+
 from base.base_class import Base
 from utilities.logger import Logger
 

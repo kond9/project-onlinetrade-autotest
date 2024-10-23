@@ -9,7 +9,6 @@ from pages.smartphones_category_in_the_catalog_page import SmartphonesCategoryIn
 
 @allure.description("Test buy product")
 def test_buy_product(driver, login):
-
     print("Начало теста")
 
     pa = PersonalAccountPage(driver)
