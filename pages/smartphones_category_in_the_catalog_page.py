@@ -79,8 +79,11 @@ class SmartphonesCategoryInTheCatalogPage(Base):
             EC.element_to_be_clickable((By.XPATH, self.buy_button)))
 
     def get_arrange_order_button(self):
-        return WebDriverWait(self.driver, 30).until(
+        try:
+            return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.arrange_order_button)))
+        except TimeoutException:
+            print("Товар уже в корзине")
 
     def get_main_word(self):
         return WebDriverWait(self.driver, 30).until(
@@ -142,8 +145,11 @@ class SmartphonesCategoryInTheCatalogPage(Base):
         print("CLick buy button")
 
     def click_arrange_order_button(self):
-        self.get_arrange_order_button().click()
-        print("CLick arrange order button")
+        try:
+            self.get_arrange_order_button().click()
+            print("CLick arrange order button")
+        except AttributeError:
+            print("Вы в корзине")
 
     # Methods
 
